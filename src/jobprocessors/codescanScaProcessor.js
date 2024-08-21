@@ -15,7 +15,7 @@ function process(jobDetail){
     }
     const artifacts = JSON.parse(jobDetail.artifacts);
     const licence = artifacts.license;
-    let failed = false
+    let failed = false;
 
     //licence冲突 报错
     const licenceText = JSON.parse(licence.text);
