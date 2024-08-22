@@ -34259,7 +34259,7 @@ async function getStarted() {
             const componentList = componentResponse.data.data;
             const jobProcessor = jobProcessors["codescan-sca-new"];
             if (jobProcessor) {
-                failed = jobProcessor(componentList) || failed;
+                failed = jobProcessor(componentList, license) || failed;
             }
 
         } else if (codeType === "stc") {
@@ -34350,12 +34350,15 @@ const core = __nccwpck_require__(2186);
  * 报错:
  *   1. 存在licence冲突
  */
-function process(componentList){
+function process(componentList, license){
     core.debug("componentList:" + JSON.stringify(componentList));
     let failed = false;
 
     //licence冲突 报错
-    componentList.forEach((component) => {
+    componentList.forEach((license) => {
+        if (component.licenses.indexOf() !== -1) {
+            return;
+        }
         const licenses =
             component.licenses.length === 0 ? "未录入" : component.licenses;
         core.warning(

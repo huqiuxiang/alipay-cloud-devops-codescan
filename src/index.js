@@ -89,7 +89,7 @@ async function getStarted() {
             const componentList = componentResponse.data.data;
             const jobProcessor = jobProcessors["codescan-sca-new"];
             if (jobProcessor) {
-                failed = jobProcessor(componentList) || failed;
+                failed = jobProcessor(componentList, license) || failed;
             }
 
         } else if (codeType === "stc") {
