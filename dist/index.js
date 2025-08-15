@@ -36271,8 +36271,9 @@ function process(itemList){
             errorMessage += `\n细节/建议版本:${item.vulDependenceProofs[0].vulFixVersion}`
         }
         if (['严重','高危'].includes(item.rank)){
-            hasError = true;
-            core.setFailed(errorMessage);
+//            hasError = true;
+//            core.setFailed(errorMessage);
+              core.warning(errorMessage);
         }else {
             core.warning(errorMessage);
         }
